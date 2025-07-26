@@ -5,11 +5,22 @@ import java.util.List;
 
 public class ListSorter {
     public void sort(List<String> sourceList) {
+        sourceList.sort(new ListComparator());
     }
 }
 
 class ListComparator implements Comparator<String> {
     @Override
     public int compare(String a, String b) {
+        int funcA = func(a);
+        int funcB = func(b);
+        if (funcA != funcB) {
+            return funcA - funcB;
+        }
+        return a.compareTo(b);
+    }
+
+    private int func(String val) {
+        return (int) (5*Math.pow(Integer.parseInt(val),2) + 3);
     }
 }
